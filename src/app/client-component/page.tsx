@@ -1,37 +1,10 @@
-'use client';
-
-import { Suspense, useEffect, useState } from 'react';
-import { fetchProducts } from '@/libs/fetchProducts';
-import { Product } from '@/libs/types/types';
+import { Products } from '@/app/client-component/products';
 
 export default function Page() {
   return (
     <div>
       <h1>Client Component</h1>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Products />
-      </Suspense>
+      <Products />
     </div>
-  );
-}
-
-function Products() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await fetchProducts();
-      setProducts(result);
-    })();
-  }, []);
-
-  return (
-    <ul className="flex flex-col gap-4">
-      {products.map((product) => (
-        <li key={product.id} className="border border-green-400">
-          <strong>{product.title}</strong>
-        </li>
-      ))}
-    </ul>
   );
 }
