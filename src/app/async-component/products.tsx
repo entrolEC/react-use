@@ -2,7 +2,7 @@
 
 import { Product } from '@/libs/types/types';
 
-export async function Products({ products }: { products: Product[] }) {
+export function Products({ products }: { products: Product[] }) {
   return (
     <div>
       <ul className="flex flex-col gap-4">
